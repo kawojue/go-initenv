@@ -11,10 +11,27 @@ import (
 // LoadEnv loads environment variables from the specified files.
 // If no paths are provided, add a nil, it loads from the default .env file.
 // initenvs.LoadEnv()
-func LoadEnv(paths ...*string) {
-	var err error
 
-	if len(paths) == 1 && paths[0] == nil {
+func includesNil(paths []interface{}) bool {
+	for _, path := range paths {
+		if path == nil {
+			return true
+		}
+	}
+	return false
+}
+
+func LoadEnv(paths ...*string) {
+	var (
+		err     error
+		my_path []any
+	)
+
+	for _, path := range paths {
+		my_path = append(my_path, path)
+	}
+
+	if includesNil(my_path) || len(paths) == 0 {
 		err = godotenv.Load()
 	} else {
 		for _, path := range paths {
