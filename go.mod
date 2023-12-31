@@ -1,4 +1,4 @@
-module github.com/kawojue/init-envs
+module github.com/kawojue/init-env
 
 go 1.21.5
 
