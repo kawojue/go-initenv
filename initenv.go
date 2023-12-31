@@ -10,7 +10,7 @@ import (
 
 // LoadEnv loads environment variables from the specified files.
 // If no paths are provided, it loads from the default .env file.
-// initenvs.LoadEnv()
+// initenv.LoadEnv()
 func LoadEnv(paths ...*string) {
 	var err error
 
@@ -32,7 +32,7 @@ func LoadEnv(paths ...*string) {
 
 // GetEnv retrieves the value of the specified environment variable.
 // If the variable is not set in your env file, it returns the default value.
-// value := initenvs.GetEnv("KEY", "default")
+// value := initenv.GetEnv("KEY", "default")
 func GetEnv(key, defaultVal string) string {
 	if value, exists := os.LookupEnv(key); exists {
 		return value
