@@ -10,16 +10,16 @@ import (
 
 // LoadEnv loads environment variables from the specified files.
 // If no paths are provided, it loads from the default .env file.
-func LoadEnv(paths ...*string) {
+func LoadEnv(paths ...string) {
 	var err error
 
 	if len(paths) == 0 {
 		err = godotenv.Load()
 	} else {
 		for _, path := range paths {
-			err = godotenv.Load(*path)
+			err = godotenv.Load(path)
 			if err != nil {
-				log.Fatal(fmt.Sprintf("Error loading %s file", *path), err)
+				log.Fatal(fmt.Sprintf("Error loading %s file", path), err)
 			}
 		}
 	}
