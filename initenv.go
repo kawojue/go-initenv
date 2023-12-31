@@ -10,7 +10,6 @@ import (
 
 // LoadEnv loads environment variables from the specified files.
 // If no paths are provided, it loads from the default .env file.
-// initenv.LoadEnv()
 func LoadEnv(paths ...*string) {
 	var err error
 
